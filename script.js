@@ -36,16 +36,29 @@ for (let i = 0; i < bouquetLayout.length; i += 1) {
   rose.style.setProperty("--delay", `${(i % 6) * 0.28}s`);
   rose.style.zIndex = String(300 + Math.round(spot.y));
 
-  rose.innerHTML = `
-    <span class="petal"></span>
-    <span class="petal"></span>
-    <span class="petal"></span>
-    <span class="petal"></span>
-    <span class="center"></span>
+  const isSunflower = i % 3 === 0;
+  const stemAndLeaves = `
     <div class="stem" aria-hidden="true"></div>
     <span class="leaf left" aria-hidden="true"></span>
     <span class="leaf right" aria-hidden="true"></span>
   `;
+
+  if (isSunflower) {
+    rose.classList.add("sunflower");
+    const petals = Array.from({ length: 24 }, (_, p) =>
+      `<span class="sp" style="--a:${p * 15}deg"></span>`
+    ).join("");
+    rose.innerHTML = `<span class="sunhead">${petals}<span class="sun-core"></span></span>${stemAndLeaves}`;
+  } else {
+    rose.innerHTML = `
+      <span class="petal"></span>
+      <span class="petal"></span>
+      <span class="petal"></span>
+      <span class="petal"></span>
+      <span class="center"></span>
+      ${stemAndLeaves}
+    `;
+  }
 
   garden.appendChild(rose);
 }
