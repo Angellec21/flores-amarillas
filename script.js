@@ -36,7 +36,7 @@ for (let i = 0; i < bouquetLayout.length; i += 1) {
   rose.style.setProperty("--delay", `${(i % 6) * 0.28}s`);
   rose.style.zIndex = String(300 + Math.round(spot.y));
 
-  const isSunflower = i % 3 === 0;
+  const isSunflower = true;
   const stemAndLeaves = `
     <div class="stem" aria-hidden="true"></div>
     <span class="leaf left" aria-hidden="true"></span>
